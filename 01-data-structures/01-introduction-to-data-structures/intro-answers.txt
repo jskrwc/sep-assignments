@@ -1,0 +1,17 @@
+Questions:
+1.  How does your data structure allow developers to access and manipulate the data?
+2.  If a developer wanted to find a specific element in your data structure, how would you search for it?
+3.  What other real-world data can each structure represent?
+
+
+Problem:  A line of people at an amusement park ride.
+Answers
+  1.  data structure can utilize all array methods (add, delete, sort etc.)
+  2.  can find elements by index (first, last, specific number etc.) or by the data itself (eg. name search, characteristics - string contains__ etc, boolean etc)
+  3.  limitless categories/classes can be represented via array.  any ordered lists (e.g. to do list, instructions, rankings)
+
+Problem: Pixels on a computer screen.
+Answers:
+  1.  data accessed thru array, with 2D array for coordinates.  Can use insert to place a pixel in the coordinate array.
+  2.  Can use "at" method to find where pixel is (in coordinate matrix)
+  3.  any location data could be represented by the structure (e.g. mapping). can use 2d array to represent anything with rows and columns (e.g. height weight; year model; speed mass)
