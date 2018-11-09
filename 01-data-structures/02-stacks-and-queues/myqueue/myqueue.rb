@@ -15,11 +15,7 @@ class MyQueue
   end
 
   def dequeue
-        # @queue[0] = nil   #doesnt work
-        # result = @queue.delete[0]   #not work
-        # result = @queue.delete_at(0)  #not work-- break into 2 lines..
-    result = @queue[0]
-    @queue.delete_at(0)
+    result = @queue.delete_at(0)  # delete and return head
     @head = @queue[0]
     @tail = @queue.last
     return result
