@@ -78,13 +78,17 @@ class LinkedList
     end
   end
 
-  #This method, needed for the benchmarking exercise, finds a specified node in the linked list 
-  def find(node)
+  #This method, needed for the benchmarking exercise, finds a specified value in the linked list and returns the node
+  def find(value)
     current_node = @head
-    while current_node != node
+    while  current_node != nil
+      if current_node.data  == value
+       return current_node
+      end
       current_node = current_node.next
     end
-    current_node
+    return nil
   end
+
 
 end

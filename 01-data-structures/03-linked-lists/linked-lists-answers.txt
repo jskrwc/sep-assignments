@@ -5,20 +5,23 @@
 
   Compare the time it takes to create a 10,000 item Array to appending 10,000 items to a Linked List.
 
-    Rehearsal --------------------------------------------------------
-    create array(.new):    0.000101   0.000007   0.000108 (  0.000106)
-    create array(for):     0.004389   0.000037   0.004426 (  0.004592)
-    create linked-list:    0.002360   0.000000   0.002360 (  0.002385)
-    ----------------------------------------------- total: 0.006894sec
-
-                               user     system      total        real
-    create array(.new):    0.000123   0.000000   0.000123 (  0.000118)
-    create array(for):     0.001918   0.000000   0.001918 (  0.001960)
-    create linked-list:    0.002483   0.000000   0.002483 (  0.002485)
+                                 user     system      total        real
+      create array(.new):    0.000064   0.000032   0.000096 (  0.000092)
+      create array(for):     0.001325   0.000000   0.001325 (  0.001325)
+      create linked-list:    0.004565   0.000000   0.004565 (  0.004565)
 
 
 
   Compare the time it takes to access the 5000th element of the Array and the 5000th Node in the Linked List.
 
+                                                  user     system      total        real
+      retrieve 5000th array element:          0.000009   0.000004   0.000013 (  0.000011)
+      retrieve 5000th linked list element:    0.000293   0.000123   0.000416 (  0.000413)
+
+
   Compare the time it takes to remove the 5000th element from the Array to removing the 5000th Node in the Linked List.
     In the Array, the 5001st item becomes the 5000th, and so on.
+
+                                         user     system      total        real
+      remove 5000th element array:   0.000014   0.000006   0.000020 (  0.000019)
+      remove 5000th element list:    0.000562   0.000234   0.000796 (  0.000798)
