@@ -1,0 +1,17 @@
+Describe three collision resolution strategies not mentioned here.
+
+  Hopscotch Hashing
+    Combines approaches of cuckoo hashing and linear probing.  The hopscotch hashing algorithm works by defining a neighborhood of buckets near the original hashed bucket, where a given entry is always found. The search is limited to the number of entries in this neighborhood. When inserting an entry, one first attempts to add it to a bucket in the neighborhood. However, if all buckets in this neighborhood are occupied, the algorithm traverses buckets in sequence until an open slot (an unoccupied bucket) is found (as in linear probing). At that point, since the empty bucket is outside the neighborhood, items are repeatedly displaced in a sequence of hops. (This is similar to cuckoo hashing, but with the difference that in this case the empty slot is being moved into the neighborhood, instead of items being moved out with the hope of eventually finding an empty slot.) Each hop brings the open slot closer to the original neighborhood, without invalidating the neighborhood property of any of the buckets along the way. In the end, the open slot has been moved into the neighborhood, and the entry being inserted can be added to it
+
+  Coalesced hashing
+    Coalesced hashing uses a similar technique as separate chaining, but instead of allocating new nodes for the linked list, buckets in the actual table are used. The first empty bucket in the table at the time of a collision is considered the collision bucket. When a collision occurs anywhere in the table, the item is placed in the collision bucket and a link is made between the chain and the collision bucket.
+
+  Robin Hood Hashing
+    Is actually a way to implement linear-probing hash tables. In the classical linear probing implementation, whenever a hash table slot is already taken (due to hash collision), you probe ahead until you find an empty slot. When the hash table is highly loaded, this can lead to entries being stored far away from their preferred position.
+    Robin Hood Hashing features a notion of displacement. The displacement of an entry is the distance between its actual position and its preferred position. Furthermore, we call probe count the number of probed slots in order to find a free slot. When inserting an entry, the final probe count is the displacement.
+    When inserting an entry A using Robin Hood Hashing, if you encounter an entry B whose displacement is smaller than the probe count, you insert A in B's position, and relocate B further in the table (following the same rules).
+    The result is that the displacements of all entries in the map tend to even out.
+
+Create your own collision resolution strategy and describe how it works.
+
+    Mash Hashing.   Use multiple hash functions.  h1 to h4  Default is h1.  If collision, use next hash function. If all attempted and collision results, use the hash that places into the bucket with the least number of objects.  So similar to separate chaining, but minimizing chain lengths.
