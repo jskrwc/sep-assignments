@@ -19,45 +19,67 @@ RSpec.describe MinHeapTree, type: Class do
   let (:mad_max_2) { Node.new("Mad Max 2: The Road Warrior", 98) }
 
   describe "#insert(data)" do
-    it "properly inserts new nodes with a higher ratings than parent" do
+    it "properly inserts new nodes with a higher ratings than parents" do
       heap.insert(root, hope)
       heap.insert(root, shawshank)
-      expect(root.title).to eq "The Matrix"
+      heap.insert(root, empire)
+      heap.insert(root, mad_max_2)
+      expect(heap.root.title).to eq "The Matrix"
     end
 
-    it "properly inserts a new node with lower rating than parent" do
-      heap.insert(root, pacific_rim)
+    it "properly inserts a new node with lower rating than root" do
       # heap.insert(root, hope)
+      heap.insert(root, pacific_rim)
+      expect(heap.root.title).to eq "Pacific Rim"
+    end
+
+    it "properly inserts a new node with lower rating than parent - no mulitiple sift up" do
+      heap.insert(root, martian)
+      heap.insert(root, hope)
+      heap.insert(root, district)
+      expect(heap.root.left.left.title).to eq "The Martian"
+    end
+
+    it "properly inserts a new node with lower rating than root - mulitiple sift up" do
+      heap.insert(root, martian)
+      heap.insert(root, hope)
+      heap.insert(root, braveheart)
+      heap.insert(root, pacific_rim)
       expect(heap.root.title).to eq "Pacific Rim"
     end
 
     it "properly inserts new nodes both lower than parent" do
       heap.insert(root, district)
+      heap.insert(root, hope)
       heap.insert(root, shawshank)
       heap.insert(root, braveheart)
-      expect(root.title).to eq "Braveheart"
+      heap.insert(root, pacific_rim)
+      expect(heap.root.title).to eq "Pacific Rim"
     end
-  end
 
 #    ------------------
 
-  #   it "properly inserts a new node as a right child" do
-  #     tree.insert(root, district)
-  #     expect(root.right.title).to eq "District 9"
-  #   end
-  #
-  #   it "properly inserts a new node as a right-left child" do
-  #     tree.insert(root, hope)
-  #     tree.insert(root, martian)
-  #     expect(root.right.left.title).to eq "The Martian"
-  #   end
-  #
-  #   it "properly inserts a new node as a right-right child" do
-  #     tree.insert(root, empire)
-  #     tree.insert(root, mad_max_2)
-  #     expect(root.right.right.title).to eq "Mad Max 2: The Road Warrior"
-  #   end
-  # end
+    it "properly inserts a new node as a right child" do
+      heap.insert(root, shawshank)
+      heap.insert(root, district)
+      expect(root.right.title).to eq "District 9"
+    end
+
+    it "properly inserts a new node as a right-left child" do
+      heap.insert(root, district)
+      heap.insert(root, shawshank)
+      heap.insert(root, hope)
+      heap.insert(root, empire)
+      heap.insert(root, mad_max_2)
+      expect(heap.root.right.left.title).to eq "Mad Max 2: The Road Warrior"
+    end
+
+    it "properly inserts a new node as a right-right child" do
+      heap.insert(root, empire)
+      heap.insert(root, mad_max_2)
+      expect(root.right.right.title).to eq "Mad Max 2: The Road Warrior"
+    end
+  end
   #
   # describe "#find(data)" do
   #   it "handles nil gracefully" do

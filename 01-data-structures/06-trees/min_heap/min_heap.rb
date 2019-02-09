@@ -11,26 +11,54 @@ class MinHeapTree
 
 # heap property:  parent < child  (min heap)
   def insert(root, node)
-    # insert node
-    if root == nil
+
+# # RECURSIVE begin
+#    if root == nil
+#      root == node
+#      return
+#     end
+
+#     if root.rating > node.rating  # if node < root, swap, and make node new root
+#       temp = root
+#       # # root = node
+#       #   root.title = node.title
+#       #   root.rating = node.rating
+#       # # node = temp
+#       #   node.title = temp.title
+#       #   node.rating = temp.rating
+#       @root = node
+#       node = temp
+#       insert(@root, node)
+#     else                          # if root < node -- no swap needed
+#       if root.left == nil
+#         root.left = node
+#       elsif root.right == nil
+#         root.right = node
+#       elsif root.left.left != nil && root.left.right != nil
+#         insert(root.right, node)
+#       else
+#         insert(root.left, node)
+#       end
+#     end
+# # RECURSIVE end
+
+#  ITERATIVE begin
+    puts "root = #{root.title}"
+    puts "current heap1- starting iterate:"
+    printf
+
+    if root == nil      # if no root, make node the root
       root == node
       return
     end
 
-    # if root.rating > node.rating  # if node < root, swap, and make node new root
-    #   temp = root
-    #   @root = node
-    #   node = temp
-    #   insert(@root, node)
-    # else
-    #   if root.left == nil
-    #     root.left = node
-    #   elsif root.right == nil
-    #     rool.right = node
-    #   elsif
+    if node.rating < root.rating   # if node < root, swap them
+      swap(root, node)
+      # insert(root, node)    #  insert the new node(oldroot)
+      return
+    end
 
-
-    # Breadth first search to find empty leaf to place node
+    # Breadth first search to find empty leaf to place node (find parent)
     queue = Queue.new
     queue.enq(@root)
     while queue.size > 0
@@ -48,15 +76,20 @@ class MinHeapTree
     elsif var.right == nil
       var.right = node
     end
-    parent = var
+    parent = var   ## parent FOUND!
 puts "parent: #{parent.title} #{parent.rating}  node: #{node.title} #{node.rating}"
-    if parent.rating > node.rating  # if out of order, swap and sift up)
-      swap(parent, node)
-      # sift_up(node) # check node against parent for hierarchy
-    end
-puts "current heap:"
-printf
 
+    if parent.rating > node.rating  # if out of order, swap and sift up)
+                                    #nb if parent = root, already must be < node
+      swap(parent, node)
+      puts ""
+    end
+
+# ITERATIVE end
+
+  puts "heap at end of an iteration:  "
+  printf
+  puts"=============="
   end
 
   def sift_up(node)
@@ -85,7 +118,6 @@ printf
         break
       end
     end
-
 
   end
 
@@ -120,13 +152,14 @@ printf
 
   # Breadth First Search
   def printf(children=nil)
-    if @root == nil
+    if root == nil    #@
       return nil
     end
     queue = Queue.new
-    queue.enq(@root)
+    queue.enq(root)      #@
     while queue.size > 0
       var = queue.deq
+      # puts "printf  #{var}  #{var.title}: #{var.rating}" if var.title != nil
       puts "#{var.title}: #{var.rating}" if var.title != nil
       queue.enq(var.left) if var.left != nil
       queue.enq(var.right) if var.right != nil
@@ -135,10 +168,11 @@ printf
 
 private
   def swap(parent_node,child_node)
-    puts "current heap:"
+    puts "current heap (before a swap):"
     printf
-    
-    puts "swapping parent #{parent_node.title} and child #{child_node.title}"
+
+    puts "swapping parent #{parent_node} #{parent_node.title} and child #{child_node}  #{child_node.title}"
+    temp = child_node
     temp_left = child_node.left     #set aside child's kids
     temp_right = child_node.right
 
@@ -154,8 +188,10 @@ private
         child_node.left = parent_node.left
       end
     end
+    parent_node = temp
     parent_node.left = temp_left
     parent_node.right = temp_right
-  puts "after swapping parent #{parent_node.title} and child #{child_node.title}"
-
+    puts "swapped out #{parent_node} #{parent_node.title} and child #{child_node}  #{child_node.title}"
+    puts "here's the post swap out heap:"
+    printf
   end
