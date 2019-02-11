@@ -52,15 +52,15 @@ class MinHeapTree
       return
     end
 
-    if node.rating < root.rating   # if node < root, swap them
-      swap(root, node)
-      # insert(root, node)    #  insert the new node(oldroot)
-      return
-    end
+    # if node.rating < root.rating   # if node < root, swap them
+    #   swap(root, node)
+    #   # insert(root, node)    #  insert the new node(oldroot)
+    #   return
+    # end
 
     # Breadth first search to find empty leaf to place node (find parent)
     queue = Queue.new
-    queue.enq(@root)
+    queue.enq(root)
     while queue.size > 0
       var = queue.deq
       if var.left != nil && var.right != nil
@@ -80,16 +80,18 @@ class MinHeapTree
 puts "parent: #{parent.title} #{parent.rating}  node: #{node.title} #{node.rating}"
 
     if parent.rating > node.rating  # if out of order, swap and sift up)
-                                    #nb if parent = root, already must be < node
       swap(parent, node)
-      puts ""
+
     end
 
 # ITERATIVE end
 
-  puts "heap at end of an iteration:  "
-  printf
-  puts"=============="
+    puts "printf to show heap at end of an iteration:  "
+    printf
+    puts"=============="
+    puts "root at end of iteration:  #{@root} #{@root.title} #{@root.rating}"
+    puts "root.left - this is nil, but should be the Matrix here:  #{@root.left} ?"
+
   end
 
   def sift_up(node)
@@ -156,7 +158,7 @@ puts "parent: #{parent.title} #{parent.rating}  node: #{node.title} #{node.ratin
       return nil
     end
     queue = Queue.new
-    queue.enq(root)      #@
+    queue.enq(@root)      #@
     while queue.size > 0
       var = queue.deq
       # puts "printf  #{var}  #{var.title}: #{var.rating}" if var.title != nil
@@ -168,6 +170,7 @@ puts "parent: #{parent.title} #{parent.rating}  node: #{node.title} #{node.ratin
 
 private
   def swap(parent_node,child_node)
+    puts "initial root in swap method: #{@root} #{@root.title} #{@root.rating}"
     puts "current heap (before a swap):"
     printf
 
@@ -176,22 +179,41 @@ private
     temp_left = child_node.left     #set aside child's kids
     temp_right = child_node.right
 
-    # if child is on left
-    if parent_node.left == child_node
+    # assign child the parent's attributes
+    child_node = parent_node
+    # assigning child_node its new kids
+    if parent_node.left == temp  # if child was on left
       child_node.left = parent_node
-      if parent_node.right != nil
-        child_node.right = parent_node.right
-      end
-    else   # child is on the right
+            # child_node.left.left = temp_left
+            # child_node.left.right = temp_right
+      child_node.right = parent_node.right
+    else   # child was on the right
       child_node.right = parent_node
-      if child_node.left != nil
-        child_node.left = parent_node.left
-      end
+            # child_node.right.left = temp_left
+            # child_node.right.right = temp_right
+      child_node.left = parent_node.left
     end
-    parent_node = temp
-    parent_node.left = temp_left
-    parent_node.right = temp_right
-    puts "swapped out #{parent_node} #{parent_node.title} and child #{child_node}  #{child_node.title}"
+
+    # assign child attributes to parent (swapped)
+      puts "parent_node.title #{parent_node} #{parent_node.title} being replaced by child_node #{temp} #{temp.title} ======="
+
+      parent_node = temp
+      # assign the childs orignial kids to the parent
+      parent_node.left = temp_left
+      parent_node.right = temp_right
+
+    # assign the remaining parent attributes to the child
+
+    puts "before root change   @root:  #{@root.title}"
+    @root = parent_node # if root changed # reassign @root to new root
+    puts "after root change   @root:  #{@root.title}"
+
+    puts "swapped out child #{parent_node} #{parent_node.title} and parent #{child_node}  #{child_node.title}"
+
     puts "here's the post swap out heap:"
-    printf
+    puts "root: #{@root} #{@root.title} #{@root.rating}"
+    puts "root.left - this is nil, but should be the Matrix here:  #{@root.left} ?"
+    puts "new parent's child left: #{child_node.left}  #{child_node.left.title}"
+    # puts "printf"
+    # printf
   end
