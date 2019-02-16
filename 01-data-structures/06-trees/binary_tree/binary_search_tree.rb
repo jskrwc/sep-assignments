@@ -78,27 +78,4 @@ class BinarySearchTree
 
   end
 
-  # # Recursive Breadth First Search  ALT METHODOLOGY - pushes to array instead of queue
-  # def printf(children=nil)
-  #   if children == nil
-  #     children = [@root]  # root is 1st item in children array
-  #   end
-  #   row = []   # output of each row
-  #
-  #   children.each do |child|
-  #     puts "#{child.title}: #{child.rating}"
-  #     if child.left != nil
-  #       row.push(child.left)
-  #     end
-  #     if child.right != nil
-  #       row.push(child.right)
-  #     end
-  #   end
-  #   if row.length > 0
-  #     printf(row)
-  #   else
-  #     nil
-  #   end
-  # end
-
 end
