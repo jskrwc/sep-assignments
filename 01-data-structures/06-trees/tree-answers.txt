@@ -1,19 +1,43 @@
 1.  Print both Trees to the console and compare the difference between your Binary Search Tree and your Heap.
+    Tree is ordered down from root, values generally increase as go to right.  Min heap nodes not ordered left to right.
 
 2.  Insert all numbers from 1 to 100000 into both Trees, then use Benchmark to compare performance:
+(10K)
+╰─➤  ruby 06-trees/benchmarks.rb
+                                user     system      total        real
+Tree Insert                 0.040000   0.000000   0.040000 (  0.033616)
+Heap Insert                10.060000   0.070000  10.130000 ( 10.203738)
+                                user     system      total        real
+Tree Find                   0.010000   0.000000   0.010000 (  0.005784)
+Heap Find                   0.000000   0.000000   0.000000 (  0.003754)
+                                user     system      total        real
+Tree Delete                 0.000000   0.000000   0.000000 (  0.004873)
+Heap Delete                 0.010000   0.000000   0.010000 (  0.003412
 
+(100K)
+─➤  ruby 06-trees/benchmarks.rb
+                                user     system      total        real
+Tree Insert                 0.350000   0.010000   0.360000 (  0.358026)
+Heap Insert               1525.360000  26.210000 1551.570000 (1577.563409)
+                                user     system      total        real
+Tree Find                   0.050000   0.000000   0.050000 (  0.050327)
+Heap Find                   0.040000   0.000000   0.040000 (  0.043631)
+                                user     system      total        real
+Tree Delete                 0.050000   0.000000   0.050000 (  0.048011)
+Heap Delete                 0.040000   0.000000   0.040000 (  0.043204)
 
 
   How much time does an average insertion consume in the Binary Search Tree compared to the Heap?
-
+    Binary search tree much faster to insert -- I used breadth first (instead of recursive) for  heap insert, so orders of magnitude slower (very inefficient to build the tree itself due to sift up and ordering).  I also did benchmarks for 10K to compare (search for 5000)
 
   How much time does finding 50000 in the Binary Search Tree consume compared to the Heap?
-
+    Binary Tree takes longer than Heap search
 
   How much time does the average deletion consume in a Binary Search Tree compared to the Heap?
-
+    Similar to deletion-- faster in heap.
 
   When would you use a Binary Search Tree and why?
-
+    I would generally use if want an ordered set of items from which you can quickly locate any item, or that you can traverse in order.
 
   When would you use an Heap and why?
+    I would use heap where speed and efficiency of finding data is paramount because tends to be faster for find/delete- particularly when you are interest in finding the smallest (min heap) item in bag.
