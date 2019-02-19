@@ -1,0 +1,19 @@
+1.  Print both Trees to the console and compare the difference between your Binary Search Tree and your Heap.
+
+2.  Insert all numbers from 1 to 100000 into both Trees, then use Benchmark to compare performance:
+
+
+
+  How much time does an average insertion consume in the Binary Search Tree compared to the Heap?
+
+
+  How much time does finding 50000 in the Binary Search Tree consume compared to the Heap?
+
+
+  How much time does the average deletion consume in a Binary Search Tree compared to the Heap?
+
+
+  When would you use a Binary Search Tree and why?
+
+
+  When would you use an Heap and why?
