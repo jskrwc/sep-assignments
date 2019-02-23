@@ -1,0 +1,46 @@
+Using proper pseudo-code, describe three or more primitive algorithms used in your day-to-day life. Write your answers in a file called intro_algorithms_answers.txt.
+
+
+Calculatng a tip
+
+  READ total of bill
+
+  IF service was excellent THEN
+    CALCULATE tip as .20 times total
+  ELSE IF service was good or average THEN
+    CALCULATE tip as .15 time total
+  ELSE IF service was poor THEN
+    Stare derisively at staff
+    Sigh heavily and Shake head
+    CALCULATE tip as 10% of total
+  ENDIF
+
+  RETURN tip
+
+
+Crossing the street
+
+  Go to edge of street.
+  Look left
+  Look right
+  Look left
+
+  CALCULATE (estimate) sufficient time it will take to cross street.
+  IF no traffic is approaching or there is sufficient time to cross without interference with traffic THEN
+    Cross street
+  EXIT street
+
+
+Prepare bowl of cereal
+
+    IF have milk, cereal, and bowl THEN
+      Remove a bowl from cabinet and place on counter
+      Pour 1 cup of cereal into bowl
+      READ milk expiration date
+      IF milk not expired THEN
+        pour cup of milk into bowl
+      ELSE
+        break
+    ELSE
+      break
+    ENDIF
