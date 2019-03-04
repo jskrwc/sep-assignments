@@ -1,0 +1,55 @@
+1.  Describe an analogy for relating an algorithm that has efficiency O(1) and another algorithm that has O(2n). An example would be:
+
+An algorithm that has O(1) is a Cheetah and an algorithm that has O(2n) is a Snail.
+
+  An algorithm that has 0(1) is a Cigarette speedboat, and an algorithm that has 0(2^n) is a foot-powered paddle boat.
+
+
+2.  In plain English, what is the best case scenario for binary search?
+
+  A binary search repeatedly cuts the collection to be searched into halves.  So a best case scenario is a search which only has to get cut in half once.  That is, the search target is the midpoint of the collection, so it is found on the very first iteration.
+
+
+3.  In plain English, what is the worst-case scenario for binary search?
+
+  The worst case scenario would be a target that requires the maximum number of iterations or splits in the search.  That is, it requires cutting the collection in half the maximum number of times before hitting the target.
+  For example, finding 0 in 0-100:  100-->50-->25-->13-->7-->4-->2-->1-->0.  Requires 7 splits 2^6<100<2^7
+  Also, this assumes the target is actually in the collection.  If not, it could also result in worst case scenario (like above example, but target = -1).
+
+
+4.  In plain English, what is the bounded-case scenario for binary search?
+
+  The bounded case scenario for binary search lies between the best and the worst case scenario.  That is, the search target is not the first found midpoint, but is also not found on the last (worst case) possible iteration.
+
+
+5.  Create a graph using the data below. Here's a CSV with the values you'll need.
+
+      See Q5.pdf
+
+6.  What is the limit of the function above as n approaches infinity?
+
+      limit = infinity
+
+7,  What is the Big-O of an algorithm that has the data points above?
+
+      0(2^n)
+
+8.  Write a Ruby method that takes a number n. This method must print the worst-case number of iterations for linear search to find an item in collections of size one to n. Use it to generate a table of worst-case iterations of collections up to size 10.
+
+    See Q9.pdf
+
+9. Create a graph from the output using Google Sheets or other graphing software. Analyze the graph and denote its Big-O somewhere on the graph.
+
+    See Q8.pdf
+
+10. What is the Big-O of binary search?
+
+      O(log n)
+
+11. What is the Big-Ω of binary search?
+
+      Ω(1)
+
+12. What is the Big-Ө of binary search?
+
+      Ө(log n)
