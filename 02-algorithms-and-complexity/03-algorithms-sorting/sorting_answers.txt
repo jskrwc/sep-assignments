@@ -1,0 +1,30 @@
+Looking at the bar chart, speculate on why you think some sort algorithms are faster than others and provide rationale as to your thought process.
+
+  The speed of algorithms is highly dependent on their complexity.  An algorithm that requires numerous nested loops or recursive calls may take longer.  Shifting elements in array is time consuming.
+
+  For comparison's sake, I also looked at a 500 element array to see how the algorithms compared (because for small collections, their efficiency may act differently than for very high volume collections-- for example, insertion sort was fast at low number (50) but its performance degraded quickly for the larger collection (500).
+
+
+
+Sorting 1-50 array:
+
+user     system      total        real
+bubble_sort                 0.000000   0.000000   0.000000 (  0.000176)
+bucket_sort                 0.000000   0.000000   0.000000 (  0.000062)
+heap_sort                   0.000000   0.000000   0.000000 (  0.000072)
+insertion_sort              0.000000   0.000000   0.000000 (  0.000103)
+merge_sort                  0.000000   0.000000   0.000000 (  0.000174)
+quick_sort                  0.000000   0.000000   0.000000 (  0.000312)
+selection_sort              0.000000   0.000000   0.000000 (  0.000169)
+
+
+Sorting 1-500 array:
+
+user     system      total        real
+bubble_sort                 0.020000   0.000000   0.020000 (  0.019696)
+bucket_sort                 0.000000   0.000000   0.000000 (  0.001600)
+heap_sort                   0.000000   0.000000   0.000000 (  0.000948)
+insertion_sort              0.010000   0.000000   0.010000 (  0.007016)
+merge_sort                  0.000000   0.000000   0.000000 (  0.002602)
+quick_sort                  0.020000   0.010000   0.030000 (  0.021885)
+selection_sort              0.010000   0.000000   0.010000 (  0.007837)
