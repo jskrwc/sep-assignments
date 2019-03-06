@@ -1,0 +1,21 @@
+Version one: (code optimization)
+
+    This is an insertion sort.  The algorithm loops through the entire array (length n).  There is an internal loop of length n as well. So the complexity worst case, is n x n or n^2.
+
+    0(n^2)
+
+
+Version two: (complexity improvement)
+
+    Here I used a merge_sort.  The algorithm is binary where it repeatedly divides into 2 halves. It does this until n subcollections.  So the Big O complexity is n * log(n).  That is, each time you double the collection, would need one more divide loop, and have double the number of subcollections to merge.
+
+    O(nlog(n))
+
+
+Version three:  (space complexity improvement)
+
+    In order to minimize space complexity, I used selection sort (nb. the original insertion sort also had lesser space complexity-- both minimize variables/ space resources required and have a space complexity of O(1).)
+
+    While the space complexity improved, the time complexity did not.  The algorithm requires looping through the array of n, n times. Thus has n x n or n^2 complexity.
+
+    O(n^2)
