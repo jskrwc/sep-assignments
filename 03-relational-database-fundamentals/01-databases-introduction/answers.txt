@@ -1,0 +1,88 @@
+1.  What data types do each of these values represent?
+
+    "A Clockwork Orange"      string
+    42                        integer
+    09/02/1945                date
+    98.7                      float
+    $15.99                    string
+
+2.  Explain in your own words when a database might be used. Explain when a text file might be used.
+
+    A database might be used whenever there is a need for persistently stored information, of varying types.  Particularly when it needs to be accessed, modified or updated in part (i.e. subsets of data or cells v. whole file).
+
+3.  Describe one difference between SQL and other programming languages.
+
+    SQL varies from many other programming language in that it uses a single "=" to compare values (v. "==" found in many other languages)
+
+4.  In your own words, explain how the pieces of a database system fit together at a high level.
+
+    Data is stored in table and can be identified by column and row.  Typically the column describes and varies by data type.  The row represents an individual record spanning the various columns.
+
+5.  Explain the meaning of table, row, column, and value.
+
+    A table is a matrix of columns and rows.  Columns (vertical) typically  hold various types of data (values) while the row represents an individual record spanning the various columns.  So, e.g. each column may represent various values:  name, age, email address, zip code.   Each row would be one record (set) of those columns-- i.e. the column values for person "X".
+
+6.  List 3 data types that can be used in a table.
+
+    numbers, strings, arrays, booleans, hashes
+
+7.  Given this payments table, provide an English description of the following queries and include their results:
+
+     SELECT date, amount
+     FROM payments;
+                            requests dates and amounts of payments
+
+                            date	amount
+                            2016-05-01T00:00:00.000Z	1500.0000
+                            2016-05-10T00:00:00.000Z	37.0000
+                            2016-05-15T00:00:00.000Z	124.9300
+                            2016-05-23T00:00:00.000Z	54.7200
+
+     SELECT amount
+     FROM payments
+     WHERE amount > 500;
+                            request any payment amounts > 500
+
+                            amount
+                            1500.0000
+
+     SELECT *
+     FROM payments
+     WHERE payee = 'Mega Foods';
+                              selects all where the payee was Mega Foods
+
+                              date	payee	amount	memo
+                              2016-05-15T00:00:00.000Z	Mega Foods	124.9300	Groceries
+
+
+8. Given this users table, write SQL queries using the following criteria and include the output:
+
+The email and sign-up date for the user named DeAndre Data.
+
+    SELECT email, signup
+    FROM users
+    WHERE name = 'DeAndre Data'
+
+                        email	signup
+                        datad@comcast.net	2008-01-20T00:00:00.000Z
+
+
+The user ID for the user with email 'aleesia.algorithm@uw.edu'.
+
+    SELECT userid
+    FROM users
+    WHERE email = 'aleesia.algorithm@uw.edu'
+
+
+                          userid
+                          1
+
+
+All the columns for the user ID equal to 4.
+
+    SELECT *
+    FROM users
+    WHERE userid = 4
+
+                          userid	name	email	signup
+                          4	Brandy Boolean	bboolean@nasa.gov	1999-10-15T00:00:00.000Z
